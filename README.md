@@ -1,6 +1,7 @@
-# TERRAFEST (Terra Festival ITERA)
+# TUGAS LDOP RISING STARS: TERRAFEST (Terra Festival ITERA)
 
-Platform Web Terintegrasi untuk Penemuan Acara, War Tiket Berskala Besar (*Anti-Overselling*), dan Manajemen Kehadiran di Lapangan (*Anti Double-Entry*) untuk Institut Teknologi Sumatera (ITERA).
+> **Proyek Tugas LDOP RISING STARS — Kelompok 3**  
+> Platform Web Terintegrasi untuk Penemuan Acara, War Tiket Berskala Besar (*Anti-Overselling*), dan Manajemen Kehadiran di Lapangan (*Anti Double-Entry*) untuk Institut Teknologi Sumatera (ITERA).
 
 ---
 
