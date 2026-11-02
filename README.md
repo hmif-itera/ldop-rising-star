@@ -9,38 +9,50 @@ Platform Web Terintegrasi untuk Penemuan Acara, War Tiket Berskala Besar (*Anti-
 * **Pendamping Kelompok:** Yayan Sofhian
 * **Mentor:** Annisa Afrida
 
-### Daftar Nama & NIM:
-1. **Pangestu Anton Widodo (125140069)** - *Ketua Kelompok & Software Architect*
-2. Aulia Afza Aprilita (125140041)
-3. Avicena Putra Pradana (125140006)
-4. Amirah Zatil Izzah (125140002)
-5. Kevin Ariangga (125140050)
-6. Monika Ririn Dia (125140009)
-7. Naila Diffa Zhafirah (125140062)
-8. Agvera Dwi Aryani (125140057)
-9. Annisa Meita Nur Afni (125140101)
-10. Margareth Manurung (125140087)
-11. Sulthan Farras Daparta Hutasuhut (125140027)
-12. Kornel Simanjuntak (125140033)
-13. Jonathan Putra Holong Hutauruk (125140093)
-14. Ahmad Yusuf Fahrurrozi (125140071)
+### Pembagian Peran Tim:
 
-| No | Nama Lengkap | NIM | Peran / Jabatan |
+#### 👑 Ketua Kelompok & Lead Architect
+* **Pangestu Anton Widodo (125140069)** - *Ketua Kelompok & Lead Software Architect*
+
+#### 💻 Frontend Developer
+* **Aulia Afza Aprilita (125140041)** - *Frontend Developer*
+* **Avicena Putra Pradana (125140006)** - *Frontend Developer*
+* **Margareth Manurung (125140087)** - *Frontend Developer*
+* **Sulthan Farras Daparta Hutasuhut (125140027)** - *Frontend Developer*
+* **Kornel Simanjuntak (125140033)** - *Frontend Developer*
+
+#### ⚙️ Backend Developer
+* **Ahmad Yusuf Fahrurrozi (125140071)** - *Backend Developer*
+* **Jonathan Putra Holong Hutauruk (125140093)** - *Backend Developer*
+* **Kevin Ariangga (125140050)** - *Backend Developer*
+* **Annisa Meita Nur Afni (125140101)** - *Backend Developer*
+
+#### 🎨 UI/UX Designer
+* **Amirah Zatil Izzah (125140002)** - *UI/UX Designer*
+* **Naila Diffa Zhafirah (125140062)** - *UI/UX Designer*
+* **Monika Ririn Dia (125140009)** - *UI/UX Designer*
+* **Agvera Dwi Aryani (125140057)** - *UI/UX Designer*
+
+---
+
+### Tabel Daftar Anggota & Peran
+
+| No | Nama Lengkap | NIM | Divisi / Peran |
 |:--:|:---|:---:|:---|
-| 1 | **Pangestu Anton Widodo** | **125140069** | **Ketua Kelompok & Software Architect** |
-| 2 | Aulia Afza Aprilita | 125140041 | Anggota |
-| 3 | Avicena Putra Pradana | 125140006 | Anggota |
-| 4 | Amirah Zatil Izzah | 125140002 | Anggota |
-| 5 | Kevin Ariangga | 125140050 | Anggota |
-| 6 | Monika Ririn Dia | 125140009 | Anggota |
-| 7 | Naila Diffa Zhafirah | 125140062 | Anggota |
-| 8 | Agvera Dwi Aryani | 125140057 | Anggota |
-| 9 | Annisa Meita Nur Afni | 125140101 | Anggota |
-| 10 | Margareth Manurung | 125140087 | Anggota |
-| 11 | Sulthan Farras Daparta Hutasuhut | 125140027 | Anggota |
-| 12 | Kornel Simanjuntak | 125140033 | Anggota |
-| 13 | Jonathan Putra Holong Hutauruk | 125140093 | Anggota |
-| 14 | Ahmad Yusuf Fahrurrozi | 125140071 | Anggota |
+| 1 | **Pangestu Anton Widodo** | **125140069** | **Ketua Kelompok & Lead Software Architect** |
+| 2 | Aulia Afza Aprilita | 125140041 | Frontend Developer |
+| 3 | Avicena Putra Pradana | 125140006 | Frontend Developer |
+| 4 | Amirah Zatil Izzah | 125140002 | UI/UX Designer |
+| 5 | Kevin Ariangga | 125140050 | Backend Developer |
+| 6 | Monika Ririn Dia | 125140009 | UI/UX Designer |
+| 7 | Naila Diffa Zhafirah | 125140062 | UI/UX Designer |
+| 8 | Agvera Dwi Aryani | 125140057 | UI/UX Designer |
+| 9 | Annisa Meita Nur Afni | 125140101 | Backend Developer |
+| 10 | Margareth Manurung | 125140087 | Frontend Developer |
+| 11 | Sulthan Farras Daparta Hutasuhut | 125140027 | Frontend Developer |
+| 12 | Kornel Simanjuntak | 125140033 | Frontend Developer |
+| 13 | Jonathan Putra Holong Hutauruk | 125140093 | Backend Developer |
+| 14 | Ahmad Yusuf Fahrurrozi | 125140071 | Backend Developer |
 
 ---
 
