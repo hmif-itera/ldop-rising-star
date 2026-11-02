@@ -6,22 +6,41 @@ Platform Web Terintegrasi untuk Penemuan Acara, War Tiket Berskala Besar (*Anti-
 
 ## 👥 Anggota Kelompok 3 (14 Orang)
 
-| No | Nama | NIM | Peran / Tanggung Jawab |
+* **Pendamping Kelompok:** Yayan Sofhian
+* **Mentor:** Annisa Afrida
+
+### Daftar Nama & NIM:
+1. **Pangestu Anton Widodo (125140069)** - *Ketua Kelompok & Software Architect*
+2. Aulia Afza Aprilita (125140041)
+3. Avicena Putra Pradana (125140006)
+4. Amirah Zatil Izzah (125140002)
+5. Kevin Ariangga (125140050)
+6. Monika Ririn Dia (125140009)
+7. Naila Diffa Zhafirah (125140062)
+8. Agvera Dwi Aryani (125140057)
+9. Annisa Meita Nur Afni (125140101)
+10. Margareth Manurung (125140087)
+11. Sulthan Farras Daparta Hutasuhut (125140027)
+12. Kornel Simanjuntak (125140033)
+13. Jonathan Putra Holong Hutauruk (125140093)
+14. Ahmad Yusuf Fahrurrozi (125140071)
+
+| No | Nama Lengkap | NIM | Peran / Jabatan |
 |:--:|:---|:---:|:---|
 | 1 | **Pangestu Anton Widodo** | **125140069** | **Ketua Kelompok & Software Architect** |
-| 2 | [Nama Anggota 2] | [NIM] | Anggota Kelompok 3 |
-| 3 | [Nama Anggota 3] | [NIM] | Anggota Kelompok 3 |
-| 4 | [Nama Anggota 4] | [NIM] | Anggota Kelompok 3 |
-| 5 | [Nama Anggota 5] | [NIM] | Anggota Kelompok 3 |
-| 6 | [Nama Anggota 6] | [NIM] | Anggota Kelompok 3 |
-| 7 | [Nama Anggota 7] | [NIM] | Anggota Kelompok 3 |
-| 8 | [Nama Anggota 8] | [NIM] | Anggota Kelompok 3 |
-| 9 | [Nama Anggota 9] | [NIM] | Anggota Kelompok 3 |
-| 10 | [Nama Anggota 10] | [NIM] | Anggota Kelompok 3 |
-| 11 | [Nama Anggota 11] | [NIM] | Anggota Kelompok 3 |
-| 12 | [Nama Anggota 12] | [NIM] | Anggota Kelompok 3 |
-| 13 | [Nama Anggota 13] | [NIM] | Anggota Kelompok 3 |
-| 14 | [Nama Anggota 14] | [NIM] | Anggota Kelompok 3 |
+| 2 | Aulia Afza Aprilita | 125140041 | Anggota |
+| 3 | Avicena Putra Pradana | 125140006 | Anggota |
+| 4 | Amirah Zatil Izzah | 125140002 | Anggota |
+| 5 | Kevin Ariangga | 125140050 | Anggota |
+| 6 | Monika Ririn Dia | 125140009 | Anggota |
+| 7 | Naila Diffa Zhafirah | 125140062 | Anggota |
+| 8 | Agvera Dwi Aryani | 125140057 | Anggota |
+| 9 | Annisa Meita Nur Afni | 125140101 | Anggota |
+| 10 | Margareth Manurung | 125140087 | Anggota |
+| 11 | Sulthan Farras Daparta Hutasuhut | 125140027 | Anggota |
+| 12 | Kornel Simanjuntak | 125140033 | Anggota |
+| 13 | Jonathan Putra Holong Hutauruk | 125140093 | Anggota |
+| 14 | Ahmad Yusuf Fahrurrozi | 125140071 | Anggota |
 
 ---
 
