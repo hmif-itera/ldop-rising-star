@@ -77,11 +77,11 @@ export interface Database {
         };
         Relationships: [
           {
-            foreignKeyName: "shared_audit_logs_actor_id_fkey";
-            columns: ["actor_id"];
+            foreignKeyName: 'shared_audit_logs_actor_id_fkey';
+            columns: ['actor_id'];
             isOneToOne: false;
-            referencedRelation: "shared_profiles";
-            referencedColumns: ["id"];
+            referencedRelation: 'shared_profiles';
+            referencedColumns: ['id'];
           }
         ];
       };
@@ -158,7 +158,179 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: 'catalog_events_venue_id_fkey';
+            columns: ['venue_id'];
+            isOneToOne: false;
+            referencedRelation: 'catalog_venues';
+            referencedColumns: ['id'];
+          }
+        ];
+      };
+      catalog_artists: {
+        Row: {
+          id: string;
+          name: string;
+          genre: string | null;
+          bio: string | null;
+          photo_url: string | null;
+          instagram_url: string | null;
+          spotify_url: string | null;
+          is_active: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          name: string;
+          genre?: string | null;
+          bio?: string | null;
+          photo_url?: string | null;
+          instagram_url?: string | null;
+          spotify_url?: string | null;
+          is_active?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          name?: string;
+          genre?: string | null;
+          bio?: string | null;
+          photo_url?: string | null;
+          instagram_url?: string | null;
+          spotify_url?: string | null;
+          is_active?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
         Relationships: [];
+      };
+      catalog_stages: {
+        Row: {
+          id: string;
+          event_id: string;
+          name: string;
+        };
+        Insert: {
+          id?: string;
+          event_id: string;
+          name: string;
+        };
+        Update: {
+          id?: string;
+          event_id?: string;
+          name?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'catalog_stages_event_id_fkey';
+            columns: ['event_id'];
+            isOneToOne: false;
+            referencedRelation: 'catalog_events';
+            referencedColumns: ['id'];
+          }
+        ];
+      };
+      catalog_schedules: {
+        Row: {
+          id: string;
+          event_id: string;
+          stage_id: string;
+          artist_id: string;
+          starts_at: string;
+          ends_at: string;
+          notes: string | null;
+          deleted_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          event_id: string;
+          stage_id: string;
+          artist_id: string;
+          starts_at: string;
+          ends_at: string;
+          notes?: string | null;
+          deleted_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          event_id?: string;
+          stage_id?: string;
+          artist_id?: string;
+          starts_at?: string;
+          ends_at?: string;
+          notes?: string | null;
+          deleted_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'catalog_schedules_event_id_fkey';
+            columns: ['event_id'];
+            isOneToOne: false;
+            referencedRelation: 'catalog_events';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'catalog_schedules_stage_id_fkey';
+            columns: ['stage_id'];
+            isOneToOne: false;
+            referencedRelation: 'catalog_stages';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'catalog_schedules_artist_id_fkey';
+            columns: ['artist_id'];
+            isOneToOne: false;
+            referencedRelation: 'catalog_artists';
+            referencedColumns: ['id'];
+          }
+        ];
+      };
+      catalog_announcements: {
+        Row: {
+          id: string;
+          event_id: string;
+          title: string;
+          body: string;
+          is_pinned: boolean;
+          published_at: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          event_id: string;
+          title: string;
+          body: string;
+          is_pinned?: boolean;
+          published_at?: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          event_id?: string;
+          title?: string;
+          body?: string;
+          is_pinned?: boolean;
+          published_at?: string;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'catalog_announcements_event_id_fkey';
+            columns: ['event_id'];
+            isOneToOne: false;
+            referencedRelation: 'catalog_events';
+            referencedColumns: ['id'];
+          }
+        ];
       };
       ticket_types: {
         Row: {
@@ -375,8 +547,17 @@ export interface Database {
       shared_user_role: UserRole;
       ticket_status: 'ACTIVE' | 'USED' | 'CANCELLED';
     };
+    CompositeTypes: {
+      [_ in never]: never;
+    };
   };
 }
 
 export type Profile = Database['public']['Tables']['shared_profiles']['Row'];
 export type AuditLog = Database['public']['Tables']['shared_audit_logs']['Row'];
+export type Venue = Database['public']['Tables']['catalog_venues']['Row'];
+export type Event = Database['public']['Tables']['catalog_events']['Row'];
+export type Artist = Database['public']['Tables']['catalog_artists']['Row'];
+export type Stage = Database['public']['Tables']['catalog_stages']['Row'];
+export type Schedule = Database['public']['Tables']['catalog_schedules']['Row'];
+export type Announcement = Database['public']['Tables']['catalog_announcements']['Row'];

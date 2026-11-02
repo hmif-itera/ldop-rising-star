@@ -18,3 +18,4 @@ describe('Common Utilities', () => {
     expect(typeof formatted).toBe('string');
   });
 });
+

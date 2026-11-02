@@ -27,3 +27,4 @@ describe('Role Authorization Logic', () => {
     expect(hasRequiredRole(role, ['admin'])).toBe(false);
   });
 });
+
