@@ -9,6 +9,13 @@ export const ClaimTicketInputSchema = z.object({
 
 export type ClaimTicketInput = z.infer<typeof ClaimTicketInputSchema>;
 
+export const CancelTicketInputSchema = z.object({
+  ticket_id: z.string().uuid('ID tiket tidak valid'),
+  reason: z.string().min(5, 'Alasan pembatalan wajib diisi minimal 5 karakter'),
+});
+
+export type CancelTicketInput = z.infer<typeof CancelTicketInputSchema>;
+
 export interface ClaimTicketResultDTO {
   success: boolean;
   code: string;
@@ -45,4 +52,18 @@ export interface MyTicketDTO {
   claimed_at: string;
   used_at: string | null;
   cancelled_at: string | null;
+}
+
+export interface AdminTicketDTO {
+  id: string;
+  ticket_type_id: string;
+  ticket_type_name: string;
+  owner_id: string;
+  owner_name: string;
+  owner_email: string;
+  status: TicketStatus;
+  claimed_at: string;
+  used_at: string | null;
+  cancelled_at: string | null;
+  cancel_reason: string | null;
 }

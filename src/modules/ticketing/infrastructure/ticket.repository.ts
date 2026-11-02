@@ -1,5 +1,5 @@
 import { createServerClient } from '@/modules/shared';
-import type { TicketTypeDTO, MyTicketDTO, ClaimTicketResultDTO } from '../dto/ticket.dto';
+import type { TicketTypeDTO, MyTicketDTO, ClaimTicketResultDTO, AdminTicketDTO } from '../dto/ticket.dto';
 import { calculateRemainingQuota, getAvailabilityLabel } from '../domain/ticket.entity';
 import type { Database } from '@/modules/shared';
 
@@ -18,6 +18,24 @@ interface JoinedTicketRow {
   } | null;
 }
 
+interface JoinedAdminTicketRow {
+  id: string;
+  ticket_type_id: string;
+  owner_id: string;
+  status: 'ACTIVE' | 'USED' | 'CANCELLED';
+  claimed_at: string;
+  used_at: string | null;
+  cancelled_at: string | null;
+  cancel_reason: string | null;
+  ticket_types: {
+    name: string;
+  } | null;
+  shared_profiles: {
+    full_name: string | null;
+    email: string;
+  } | null;
+}
+
 export class TicketRepository {
   static async listTicketTypes(eventId: string): Promise<TicketTypeDTO[]> {
     const supabase = await createServerClient();
@@ -32,6 +50,35 @@ export class TicketRepository {
 
     const rows = data as unknown as TicketTypeRow[];
 
+    return rows.map((t) => {
+      const remaining = calculateRemainingQuota(t.quota_total, t.quota_claimed);
+      return {
+        id: t.id,
+        event_id: t.event_id,
+        name: t.name,
+        price_idr: Number(t.price_idr),
+        quota_total: t.quota_total,
+        quota_claimed: t.quota_claimed,
+        remaining_quota: remaining,
+        max_per_user: t.max_per_user,
+        sale_starts_at: t.sale_starts_at,
+        sale_ends_at: t.sale_ends_at,
+        is_active: t.is_active,
+        availability: getAvailabilityLabel(remaining, t.quota_total),
+      };
+    });
+  }
+
+  static async listAllTicketTypes(eventId?: string): Promise<TicketTypeDTO[]> {
+    const supabase = await createServerClient();
+    let query = supabase.from('ticket_types').select('*').order('created_at', { ascending: true });
+    if (eventId) {
+      query = query.eq('event_id', eventId);
+    }
+    const { data, error } = await query;
+    if (error || !data) return [];
+
+    const rows = data as unknown as TicketTypeRow[];
     return rows.map((t) => {
       const remaining = calculateRemainingQuota(t.quota_total, t.quota_claimed);
       return {
@@ -112,6 +159,83 @@ export class TicketRepository {
     }));
   }
 
+  static async listAdminTickets(filters?: {
+    ticketTypeId?: string;
+    status?: string;
+  }): Promise<AdminTicketDTO[]> {
+    const supabase = await createServerClient();
+    let query = supabase
+      .from('ticket_tickets')
+      .select(`
+        id,
+        ticket_type_id,
+        owner_id,
+        status,
+        claimed_at,
+        used_at,
+        cancelled_at,
+        cancel_reason,
+        ticket_types (name),
+        shared_profiles (full_name, email)
+      `)
+      .order('claimed_at', { ascending: false })
+      .limit(100);
+
+    if (filters?.ticketTypeId) {
+      query = query.eq('ticket_type_id', filters.ticketTypeId);
+    }
+    if (filters?.status) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      query = query.eq('status', filters.status as any);
+    }
+
+    const { data, error } = await query;
+    if (error || !data) return [];
+
+    const rows = data as unknown as JoinedAdminTicketRow[];
+    return rows.map((row) => ({
+      id: row.id,
+      ticket_type_id: row.ticket_type_id,
+      ticket_type_name: row.ticket_types?.name ?? 'Tiket Festival',
+      owner_id: row.owner_id,
+      owner_name: row.shared_profiles?.full_name ?? 'Peserta',
+      owner_email: row.shared_profiles?.email ?? '-',
+      status: row.status,
+      claimed_at: row.claimed_at,
+      used_at: row.used_at,
+      cancelled_at: row.cancelled_at,
+      cancel_reason: row.cancel_reason,
+    }));
+  }
+
+  static async getTicketExportDetails(ticketIds: string[]): Promise<
+    Record<string, { ticketTypeName: string; ownerName: string; ownerEmail: string }>
+  > {
+    if (ticketIds.length === 0) return {};
+    const supabase = await createServerClient();
+    const { data, error } = await supabase
+      .from('ticket_tickets')
+      .select(`
+        id,
+        ticket_types (name),
+        shared_profiles (full_name, email)
+      `)
+      .in('id', ticketIds);
+
+    if (error || !data) return {};
+
+    const result: Record<string, { ticketTypeName: string; ownerName: string; ownerEmail: string }> = {};
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    for (const row of data as any[]) {
+      result[row.id] = {
+        ticketTypeName: row.ticket_types?.name ?? 'Tiket Festival',
+        ownerName: row.shared_profiles?.full_name ?? 'Peserta',
+        ownerEmail: row.shared_profiles?.email ?? '-',
+      };
+    }
+    return result;
+  }
+
   static async callClaimTicketRPC(
     ticketTypeId: string,
     quantity: number,
@@ -134,6 +258,28 @@ export class TicketRepository {
     }
 
     return data as ClaimTicketResultDTO;
+  }
+
+  static async callCancelTicketRPC(
+    ticketId: string,
+    reason?: string
+  ): Promise<{ success: boolean; code: string; message?: string }> {
+    const supabase = await createServerClient();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data, error } = await (supabase.rpc as any)('ticket_admin_cancel_ticket', {
+      p_ticket_id: ticketId,
+      p_reason: reason ?? null,
+    });
+
+    if (error) {
+      return {
+        success: false,
+        code: 'RPC_ERROR',
+        message: error.message || 'Gagal memanggil pembatalan tiket.',
+      };
+    }
+
+    return data as { success: boolean; code: string; message?: string };
   }
 
   static async getTicketByToken(token: string): Promise<{

@@ -42,3 +42,26 @@ export interface AttendanceSummaryDTO {
     count: number;
   }[];
 }
+
+export interface AdminAttendanceMetricDTO {
+  total_checkins: number;
+  successful_checkins: number;
+  already_used_count: number;
+  invalid_token_count: number;
+  cancelled_count: number;
+  by_gate: { gate_id: string; gate_name: string; count: number }[];
+  arrival_rate_15m: { time_label: string; count: number }[];
+  recent_logs: {
+    id: number;
+    gate_name: string;
+    result: AttendanceResult;
+    scanned_at: string;
+  }[];
+}
+
+export interface AttendanceExportFilter {
+  gateId?: string;
+  startDate?: string;
+  endDate?: string;
+  result?: string;
+}

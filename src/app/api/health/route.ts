@@ -1,3 +1,12 @@
-// Health check endpoint placeholder
-export async function GET() { return Response.json({ status: 'ok' }); }
+import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
+export async function GET() {
+  return NextResponse.json({
+    status: 'ok',
+    service: 'terrafest-api',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+  });
+}

@@ -1,4 +1,3 @@
-import { randomUUID } from 'node:crypto';
 import { TicketRepository } from '../infrastructure/ticket.repository';
 import { ClaimTicketInputSchema, type ClaimTicketInput, type ClaimTicketResultDTO } from '../dto/ticket.dto';
 import { requireRole } from '@/modules/shared';
@@ -8,7 +7,7 @@ export async function claimTicket(input: ClaimTicketInput): Promise<ClaimTicketR
   await requireRole(['audience', 'gate_staff', 'admin']);
 
   const validated = ClaimTicketInputSchema.parse(input);
-  const idempotencyKey = validated.idempotency_key || randomUUID();
+  const idempotencyKey = validated.idempotency_key || crypto.randomUUID();
 
   // Memanggil RPC claim_ticket (SELECT ... FOR UPDATE di level DB)
   return TicketRepository.callClaimTicketRPC(

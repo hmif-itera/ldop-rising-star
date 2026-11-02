@@ -10,6 +10,10 @@ export {
   getStaffRecentLogs,
   getAttendanceSummary,
 } from './application/attendance-summary.usecase';
+export {
+  getAdminAttendanceMetrics,
+  exportAttendanceToCSV,
+} from './application/export-attendance-csv.usecase';
 
 // Domain & DTOs
 export {
@@ -24,6 +28,8 @@ export {
   type GateDTO,
   type CheckinLogDTO,
   type AttendanceSummaryDTO,
+  type AdminAttendanceMetricDTO,
+  type AttendanceExportFilter,
 } from './dto/attendance.dto';
 
 // UI Components
@@ -32,11 +38,21 @@ export { ScanResultBanner, type ScanResultBannerProps } from './ui/scan-result-b
 
 // Public Service Facade
 import { verifyAndCheckin } from './application/verify-and-checkin.usecase';
-import { listGates, getStaffRecentLogs, getAttendanceSummary } from './application/attendance-summary.usecase';
+import {
+  listGates,
+  getStaffRecentLogs,
+  getAttendanceSummary,
+} from './application/attendance-summary.usecase';
+import {
+  getAdminAttendanceMetrics,
+  exportAttendanceToCSV,
+} from './application/export-attendance-csv.usecase';
 
 export const attendanceService = {
   verifyAndCheckin,
   listGates,
   getStaffRecentLogs,
   getAttendanceSummary,
+  getAdminAttendanceMetrics,
+  exportAttendanceToCSV,
 };
