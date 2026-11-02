@@ -1,0 +1,3 @@
+// listArtists usecase placeholder
+export {};
+

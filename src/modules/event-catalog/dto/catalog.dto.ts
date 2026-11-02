@@ -1,0 +1,3 @@
+// Catalog DTOs placeholder
+export {};
+

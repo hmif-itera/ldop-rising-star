@@ -1,0 +1,3 @@
+// getEvent usecase placeholder
+export {};
+

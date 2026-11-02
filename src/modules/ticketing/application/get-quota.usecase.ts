@@ -1,0 +1,3 @@
+// getQuota usecase placeholder
+export {};
+

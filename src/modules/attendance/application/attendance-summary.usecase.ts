@@ -1,0 +1,3 @@
+// attendanceSummary usecase placeholder
+export {};
+
