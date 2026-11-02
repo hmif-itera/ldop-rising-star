@@ -105,3 +105,4 @@ describe('EventCatalog Domain & Validation (Milestone 2)', () => {
     });
   });
 });
+
