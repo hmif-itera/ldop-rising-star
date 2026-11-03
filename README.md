@@ -6,248 +6,196 @@ Setiap kelompok mengerjakan satu website sesuai tema yang dipilih, men-deploy-ny
 ---
 
 <!-- ============================================================ -->
-<!-- BAGIAN INI UNTUK PESERTA — HAPUS SETELAH TAHAP PENGUMPULAN   -->
-<!-- ============================================================ -->
-
-## 0. Bagian yang Harus Dibaca (hapus bagian ini sebelum repo difinalkan)
-
-### 0.1 Peta branch
-
-Repository ini punya 1 branch `main` dan 10 branch pengumpulan:
-
-| Branch tujuan | Dipakai oleh | Isi branch |
-| --- | --- | --- |
-| `main` | Panitia | README, juknis, aturan. Peserta **tidak boleh** PR ke sini. |
-| `kelompok-1` | Kelompok 1 | Source code + README kelompok 1 |
-| `kelompok-2` | Kelompok 2 | Source code + README kelompok 2 |
-| `kelompok-3` | Kelompok 3 | Source code + README kelompok 3 |
-| `kelompok-4` | Kelompok 4 | Source code + README kelompok 4 |
-| `kelompok-5` | Kelompok 5 | Source code + README kelompok 5 |
-| `kelompok-6` | Kelompok 6 | Source code + README kelompok 6 |
-| `kelompok-7` | Kelompok 7 | Source code + README kelompok 7 |
-| `kelompok-8` | Kelompok 8 | Source code + README kelompok 8 |
-| `kelompok-9` | Kelompok 9 | Source code + README kelompok 9 |
-| `kelompok-10` | Kelompok 10 | Source code + README kelompok 10 |
-
-**Aturan wajib:** nama branch di fork kalian **harus sama persis** dengan branch tujuan (`kelompok-N`), lalu pull request diarahkan ke branch `kelompok-N` di repository ini — **bukan** ke `main`.
-
-### 0.2 Alur fork & pull request
-
-1. **Fork** repository ini ke akun GitHub masing-masing (tombol `Fork` di kanan atas).
-2. **Clone** hasil fork:
-   ```bash
-   git clone https://github.com/<username-kalian>/ldop-rising-star.git
-   cd ldop-rising-star
-   ```
-3. **Buat branch** dengan nama yang sama seperti branch tujuan (contoh untuk Kelompok 3):
-   ```bash
-   git checkout -b kelompok-3
-   ```
-4. **Kerjakan project** di branch tersebut, commit berkala dengan pesan yang jelas:
-   ```bash
-   git add .
-   git commit -m "feat: halaman beranda"
-   git push -u origin kelompok-3
-   ```
-5. **Buka pull request** dari fork ke repository ini:
-   - `base repository` : repo HMIF ITERA (repo ini)
-   - `base branch`     : `kelompok-3` (sesuai nomor kelompok)
-   - `head repository` : fork kalian
-   - `compare branch`  : `kelompok-3`
-   - Judul PR: `Kelompok 3 — <Tema yang Dipilih>`
-6. **Jangan close PR** sebelum batas akhir. Pembaruan cukup `git push` lagi ke branch yang sama; PR akan otomatis ter-update.
-
-### 0.3 Menyamakan fork dengan `main` (opsional tapi disarankan)
-
-Kalau panitia memperbarui README/aturan di `main`, tarik perubahannya supaya branch kelompok kalian tidak tertinggal:
-
-```bash
-git remote add upstream https://github.com/hmif-itera/ldop-rising-star.git
-git fetch upstream
-git merge upstream/main      # atau: git rebase upstream/main
-```
-
-Jangan pernah `push --force` ke branch tujuan setelah PR dibuka.
-
-### 0.4 Aturan pengumpulan
-
-- Satu kelompok = satu branch = satu pull request. Tidak boleh ada branch tambahan sebagai branch tujuan.
-- Hanya anggota kelompok yang bersangkutan yang boleh mengubah branch-nya. Dilarang push/PR ke branch kelompok lain.
-- Branch tujuan **tidak di-merge ke `main`** oleh peserta; panitia yang menangani setelah penilaian.
-- `README.md` di root branch kelompok **wajib** dilengkapi (lihat Bagian 1). README adalah bagian penilaian "Kerja Sama Tim & Proses".
-- Source code diletakkan di root repository branch tersebut (boleh berisi framework/tooling apa pun, selama bisa di-deploy).
-- Website **wajib online** dan link-nya aktif saat penilaian (minimal Vercel).
-- Jangan commit `node_modules/`, `.env`, file build, atau kredensial. Sertakan `.gitignore`.
-- Tampilan minimal responsif di desktop dan mobile.
-- Aset (gambar/ikon/font) harus bebas hak cipta atau berlisensi terbuka; cantumkan sumbernya di README.
-
-### 0.5 Checklist sebelum PR dibuka
-
-- [ ] Nama branch di fork = `kelompok-N` (persis, huruf kecil, pakai tanda hubung).
-- [ ] PR mengarah ke branch `kelompok-N` di repo ini, bukan ke `main`.
-- [ ] README sudah diisi lengkap: tema, anggota + pembagian tugas, tech stack, struktur kode, penjelasan project, link deployment.
-- [ ] Website sudah ter-deploy dan link-nya bisa dibuka (mode incognito).
-- [ ] Tidak ada `node_modules/`, `.env`, atau file rahasia yang ikut ter-commit.
-- [ ] Tampilan dicek di desktop dan mobile.
-- [ ] Memenuhi syarat di Bagian 2 (follow GitHub & LinkedIn HMIF ITERA).
-
-
-### 0.6 Daftar tema (pilih satu, satu tema hanya untuk satu kelompok — siapa cepat, dapat)
-
-1. Company profile UMKM
-2. Website sekolah / bimbingan belajar
-3. Landing page acara/event
-4. Portal berita mini
-5. Katalog produk toko online
-6. Platform booking lapangan olahraga (futsal/badminton)
-7. Aplikasi resep masakan
-8. Website wisata/destinasi lokal
-9. Perpustakaan digital mini
-10. Website komunitas hobi
-11. Landing page startup fiktif
-12. Website to-do list / manajemen tugas
-13. Website ulasan film/buku
-14. Website donasi/penggalang dana fiktif
-15. Marketplace jasa freelance mini
-
-Klaim tema dengan mengisi tabel di bawah **sebelum** mulai development (PR pertama). Panitia akan menolak tema yang sudah dipakai kelompok lain.
-
-| Branch | Kelompok | Tema | Status |
-| --- | --- | --- | --- |
-| `kelompok-1` | Kelompok 1 | `<isi tema>` | `<diklaim / kosong>` |
-| `kelompok-2` | Kelompok 2 | `<isi tema>` | `<diklaim / kosong>` |
-| `kelompok-3` | Kelompok 3 | `<isi tema>` | `<diklaim / kosong>` |
-| `kelompok-4` | Kelompok 4 | `<isi tema>` | `<diklaim / kosong>` |
-| `kelompok-5` | Kelompok 5 | `<isi tema>` | `<diklaim / kosong>` |
-| `kelompok-6` | Kelompok 6 | `<isi tema>` | `<diklaim / kosong>` |
-| `kelompok-7` | Kelompok 7 | `<isi tema>` | `<diklaim / kosong>` |
-| `kelompok-8` | Kelompok 8 | `<isi tema>` | `<diklaim / kosong>` |
-| `kelompok-9` | Kelompok 9 | `<isi tema>` | `<diklaim / kosong>` |
-| `kelompok-10` | Kelompok 10 | `<isi tema>` | `<diklaim / kosong>` |
-
----
-
-<!-- ============================================================ -->
 <!-- BAGIAN INI WAJIB DIISI OLEH SETIAP KELOMPOK DI BRANCH-NYA   -->
 <!-- ============================================================ -->
 
 ## 1. Bagian yang Wajib Diisi / Dilengkapi
 
-Isi seluruh sub-bagian berikut di branch kelompok kalian. Hapus teks penunjuk (`<...>`) setelah diisi, jangan biarkan kosong.
-
 ### 1.1 Identitas kelompok
 
 | Item | Keterangan |
 | --- | --- |
-| Nomor kelompok | `<1–10>` |
-| Nama kelompok (opsional) | `<nama kelompok / nama produk>` |
-| Tema yang dipilih | `<salin dari daftar tema Bagian 0.7>` |
-| Link website (deployment) | `<https://...vercel.app>` |
-| Repository | `<https://github.com/...>` |
+| **Nomor kelompok** | `3` |
+| **Nama kelompok (opsional)** | **Kelompok 3 — TerraFest (Terra Festival ITERA)** |
+| **Tema yang dipilih** | `3. Landing page acara/event` |
+| **Link website (deployment)** | [https://ldop-terrafest.vercel.app](https://ldop-terrafest.vercel.app) *(atau URL Vercel hasil deployment kelompok)* |
+| **Repository Asal (HMIF)** | `https://github.com/hmif-itera/ldop-rising-star` (Target Branch: `kelompok-3`) |
+| **Repository Fork / Dev** | `https://github.com/pangestuanton/ldop-rising-stars` |
+
+---
 
 ### 1.2 Anggota kelompok & pembagian tugas
 
-| No | Nama | NIM | Peran | Tugas yang dikerjakan |
-| --- | --- | --- | --- | --- |
-| 1 | `<nama>` | `<nim>` | `<ketua / front-end / back-end / desain / dokumentasi / QA>` | `<rincian tugas>` |
-| 2 | `<nama>` | `<nim>` | `<...>` | `<...>` |
-| 3 | `<nama>` | `<nim>` | `<...>` | `<...>` |
-| 4 | `<nama>` | `<nim>` | `<...>` | `<...>` |
-| 5 | `<nama>` | `<nim>` | `<...>` | `<...>` |
+* **Pendamping Kelompok:** Yayan Sofhian  
+* **Mentor:** Annisa Afrida  
 
-Catatan: setiap anggota wajib punya kontribusi yang terlihat di riwayat commit branch ini. Pembagian tugas boleh tidak simetris, tapi harus jelas dan sesuai kenyataan.
+| No | Nama | NIM | Peran | Tugas yang dikerjakan |
+|:--:|:---|:---:|:---|:---|
+| 1 | **Pangestu Anton Widodo** | **125140069** | **Ketua Kelompok & Lead Software Architect** | Desain arsitektur Modular Monolith, setup repositori Next.js 15 & Supabase, implementasi Stored Procedure PL/pgSQL atomik (`claim_ticket`, `verify_and_checkin_ticket`), RLS policies, pipeline CI/CD, dan otomatisasi pengujian integrasi Vitest. |
+| 2 | **Aulia Afza Aprilita** | **125140041** | **Frontend Developer** | Implementasi halaman beranda landing page publik (`/`), hero section festival, navigasi navbar responsif, dan showcase highlight acara TerraFest. |
+| 3 | **Avicena Putra Pradana** | **125140006** | **Frontend Developer** | Implementasi halaman lineup penampil/musisi (`/lineup`), filter dinamis kategori pengisi acara, dan kartu profil detail penampil (foto, bio, panggung). |
+| 4 | **Margareth Manurung** | **125140087** | **Frontend Developer** | Implementasi halaman jadwal penampilan & rundown interaktif (`/schedule`), timeline panggung, dan layout responsif mobile & desktop. |
+| 5 | **Sulthan Farras Daparta Hutasuhut** | **125140027** | **Frontend Developer** | Implementasi antarmuka katalog pemesanan tiket audiens (`/tickets`), visualisasi kuota tiket *realtime*, dan modal konfirmasi klaim tiket festival. |
+| 6 | **Kornel Simanjuntak** | **125140033** | **Frontend Developer** | Implementasi halaman "Tiket Saya" (`/my-tickets`), rendering kode QR kriptografis penonton, badge status tiket (*ISSUED* / *USED* / *CANCELLED*), dan fitur simpan tiket. |
+| 7 | **Ahmad Yusuf Fahrurrozi** | **125140071** | **Backend Developer** | Implementasi REST Route Handler (`/api/checkin`, `/api/health`), integrasi autentikasi GoTrue Google OAuth, dan middleware proteksi rute berbasis peran (RBAC). |
+| 8 | **Jonathan Putra Holong Hutauruk** | **125140093** | **Backend Developer** | Implementasi domain logic modul event-catalog, validasi overlap jadwal panggung (*no double-booking*), serta skrip migrasi database katalog festival. |
+| 9 | **Kevin Ariangga** | **125140050** | **Backend Developer** | Implementasi modul attendance gate checkin, verifikasi kriptografis token QR hash SHA-256 (*anti-spoofing*), dan manajemen error domain terstandarisasi. |
+| 10 | **Annisa Meita Nur Afni** | **125140101** | **Backend Developer** | Implementasi modul dasbor operasional admin (`/admin`), rekapitulasi data statistik kedatangan penonton per 15 menit, audit logging, dan ekspor CSV format UTF-8 BOM. |
+| 11 | **Amirah Zatil Izzah** | **125140002** | **UI/UX Designer** | Perancangan wireframe & design system TerraFest di Figma (palet warna festival, tipografi modern, token spacing, dan desain e-ticket). |
+| 12 | **Naila Diffa Zhafirah** | **125140062** | **UI/UX Designer** | Perancangan tata letak mobile-first untuk pengalaman penonton (eksplorasi artis, interaksi jadwal rundown, dan layar QR tiket ramah pencahayaan luar ruangan). |
+| 13 | **Monika Ririn Dia** | **125140009** | **UI/UX Designer** | Perancangan user flow dan antarmuka Gate Scanner Panitia (`/gate/scan`) dengan banner hasil validasi visual kontras tinggi minimal 40% tinggi layar. |
+| 14 | **Agvera Dwi Aryani** | **125140057** | **UI/UX Designer** | Perancangan antarmuka dasbor pemantauan admin (visualisasi grafik kedatangan live, monitoring kuota tiket, dan pembuatan aset grafis festival). |
+
+---
 
 ### 1.3 Tech stack
 
 | Bagian | Teknologi | Alasan pemilihan |
 | --- | --- | --- |
-| Bahasa / framework | `<mis. Next.js 15 + TypeScript>` | `<...>` |
-| Styling / UI | `<mis. Tailwind CSS, shadcn/ui>` | `<...>` |
-| Data / state | `<mis. JSON statis, Supabase>` | `<...>` |
-| Build & tooling | `<mis. Vite, pnpm>` | `<...>` |
-| Hosting | `<mis. Vercel>` | `<...>` |
-| Lainnya | `<ikon, font, aset>` | `<...>` |
+| **Bahasa & Framework** | Next.js 15 (App Router) + TypeScript | React Server Components memberikan performa load halaman awal instan, SEO ramah mesin pencari untuk landing page publik, dan *type-safety* ketat end-to-end. |
+| **Styling & UI** | Tailwind CSS, Radix UI / shadcn/ui, Lucide Icons | Styling *utility-first* yang ringan, responsif mobile-first, serta komponen UI yang aksesibel dengan standar WCAG. |
+| **Database & Auth** | Supabase (PostgreSQL 15, GoTrue Auth, Realtime Channels, RLS) | Menyediakan transaksi basis data ACID yang aman dari *race-condition* saat war tiket (`SELECT ... FOR UPDATE`), integrasi Google OAuth, dan WebSocket pemantauan live. |
+| **Pemrosesan QR & Kamera** | `html5-qrcode` & `qrcode.react` | Pemindaian barcode/QR dari kamera browser perangkat bergerak secara cepat (<1 detik) serta rendering QR berbasis Canvas/SVG yang tajam di sisi klien. |
+| **Testing & Tooling** | Vitest, k6, ESLint | Eksekusi 49 pengujian otomatis (unit, integrasi konkurensi, dan siklus e2e) berkecepatan tinggi serta pengujian beban lonjakan pengunjung *war ticket*. |
+| **Hosting & Deployment** | Vercel Edge Network | Platform hosting optimal untuk Next.js dengan dukungan continuous deployment, SSL otomatis, dan latency rendah di seluruh Indonesia. |
 
-Cara menjalankan project secara lokal:
+#### Cara menjalankan project secara lokal:
 
 ```bash
-# isi perintah yang benar-benar dipakai kelompok kalian
-pnpm install
-pnpm dev          # buka http://localhost:<port>
-pnpm build        # build produksi
+# 1. Kloning repositori dan masuk ke direktori
+git clone https://github.com/hmif-itera/ldop-rising-star.git
+cd ldop-rising-star
+git checkout kelompok-3
+
+# 2. Instalasi dependensi
+npm install
+
+# 3. Konfigurasi variabel lingkungan (.env.local)
+cp .env.example .env.local
+# Lengkapi variabel NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, dan SUPABASE_SERVICE_ROLE_KEY
+
+# 4. Menjalankan pengujian otomatis
+npm test
+
+# 5. Menjalankan server pengembangan
+npm run dev
+# Buka http://localhost:3000 pada browser
 ```
+
+---
 
 ### 1.4 Struktur kode
 
-Ganti contoh di bawah dengan struktur nyata repository kalian (`tree -L 3 -I node_modules`), lalu jelaskan fungsi folder/file penting.
+Struktur direktori utama repositori Kelompok 3 (menggunakan pola arsitektur **Modular Monolith**):
 
 ```text
 .
-├── README.md
-├── package.json
-├── public/                 # aset statis (gambar, ikon, font)
+├── .github/
+│   └── workflows/
+│       └── ci.yml                     # Pipeline otomatisasi CI (lint, typecheck, test)
+├── public/                            # Aset statis (gambar, ikon, logo)
 ├── src/
-│   ├── app/                # routing & halaman
-│   │   ├── page.tsx        # beranda
-│   │   └── ...
-│   ├── components/         # komponen UI yang dipakai ulang
-│   ├── lib/                # helper, util, data
-│   └── styles/             # styling global
-└── ...
+│   ├── app/                           # Next.js App Router (Delivery Layer)
+│   │   ├── (public)/                  # Beranda landing page, Lineup, Jadwal panggung
+│   │   │   ├── page.tsx               # Halaman utama TerraFest
+│   │   │   ├── lineup/page.tsx        # Daftar artis & guest star
+│   │   │   └── schedule/page.tsx      # Rundown & jadwal panggung
+│   │   ├── (auth)/                    # Autentikasi Google OAuth & Callback
+│   │   ├── (audience)/                # Katalog tiket (/tickets) & E-Tiket Saya (/my-tickets)
+│   │   ├── (gate)/                    # Pemindai kamera petugas lapangan (/gate/scan)
+│   │   ├── (admin)/                   # Dasbor monitoring live, kuota, & kehadiran
+│   │   └── api/                       # REST Route Handlers (/api/checkin, /api/health, dll.)
+│   ├── modules/                       # Domain Modules (Modular Monolith)
+│   │   ├── event-catalog/             # Domain logic acara, artis, jadwal, & panggung
+│   │   ├── ticketing/                 # Domain logic kuota, klaim tiket atomik, & tiket saya
+│   │   ├── attendance/                # Domain logic verifikasi check-in, scanner, & ekspor CSV
+│   │   └── shared/                    # Klien Supabase, utilitas RBAC, audit log, & komponen UI
+│   └── lib/                           # Helper utilitas global
+├── supabase/
+│   ├── migrations/                    # 7 berkas migrasi SQL (DDL, Stored Procedure, RLS)
+│   └── seed.sql                       # Data benih awal acara, panggung, dan tiket
+├── tests/
+│   ├── unit/                          # Unit testing utilitas, RBAC, domain error
+│   ├── integration/                   # Pengujian konkurensi (T-01 s/d T-08)
+│   ├── e2e/                           # Pengujian siklus hidup tiket end-to-end
+│   └── load/                          # Pengujian beban war tiket (k6)
+├── components.json                    # Konfigurasi shadcn/ui
+├── next.config.ts                     # Konfigurasi Next.js
+├── package.json                       # Dependensi & skrip npm
+├── tailwind.config.ts                 # Konfigurasi Tailwind CSS
+└── vitest.config.ts                   # Konfigurasi runner Vitest
 ```
 
 | Path | Fungsi |
 | --- | --- |
-| `<src/app/>` | `<...>` |
-| `<src/components/>` | `<...>` |
-| `<...>` | `<...>` |
+| `src/app/(public)/` | Halaman landing page publik festival: navigasi utama, daftar musisi/pembicara (`/lineup`), serta rundown jadwal interaktif (`/schedule`). |
+| `src/app/(audience)/` | Halaman penonton untuk memilih kategori tiket (`/tickets`) dan melihat e-tiket digital ber-QR token (`/my-tickets`). |
+| `src/app/(gate)/` | Halaman pemindai QR berbasis kamera (`/gate/scan`) untuk staf gerbang lapangan dilengkapi riwayat pemindaian (`/gate/history`). |
+| `src/app/(admin)/` | Dasbor pemantauan operasional realtime: grafik kedatangan penonton, manajemen jenis tiket, dan ekspor log kehadiran. |
+| `src/modules/event-catalog/` | Modul domain independen untuk pengelolaan artis, panggung festival, dan validasi bentrok jadwal penampilan. |
+| `src/modules/ticketing/` | Modul domain pengelolaan kuota tiket dan eksekusi klaim tiket atomik anti-overselling via PostgreSQL RPC. |
+| `src/modules/attendance/` | Modul domain verifikasi tiket di pintu masuk, pencatatan log check-in anti double-entry, dan ekspor data CSV. |
+| `src/modules/shared/` | Komponen bersama: otorisasi peran pengguna (RBAC), klien Supabase terisolasi, audit logger, dan UI primitives. |
+| `supabase/migrations/` | Skrip DDL terstruktur (0001 s/d 0007) mencakup definisi tabel, stored procedure concurrency, RLS policies, dan channel realtime. |
+| `tests/` | Kumpulan 49 test cases otomatis mencakup unit test, simulasi konkurensi war tiket, checkin gerbang, dan skenario e2e. |
+
+---
 
 ### 1.5 Penjelasan singkat project
 
-Tulis 2–4 paragraf yang mencakup:
+**Latar Belakang & Masalah:**  
+Dalam perhelatan festival dan kegiatan akbar kampus di Institut Teknologi Sumatera (ITERA), panitia kerap menghadapi dua kendala teknis utama:
+1. Lonjakan trafik serentak saat perebutan tiket gratis/berbayar (*war ticket*) yang sering menyebabkan *overselling* (tiket terjual melebihi kapasitas) dan duplikasi klaim akibat kondisi balapan (*race condition*).
+2. Antrean panjang di pintu masuk (*gate*) akibat lambatnya proses verifikasi manual serta potensi kecurangan tiket ganda (*double entry* / tiket satu dipakai berulang kali).
 
-- **Latar belakang / masalah** yang ingin diselesaikan sesuai tema.
-- **Fitur utama** yang sudah berjalan (bullet list, sebutkan halaman yang tersedia).
-- **Alur penggunaan** singkat dari sudut pandang pengunjung.
-- **Batas kemampuan** (opsional): fitur yang belum sempat dikerjakan atau keterbatasan data statis.
+**TerraFest (Terra Festival ITERA)** hadir sebagai solusi platform web modern terintegrasi yang menggabungkan landing page festival yang memikat dengan mesin transaksi tiket atomik tingkat tinggi dan sistem manajemen kehadiran lapangan berkecepatan tinggi.
 
-Fitur utama:
+**Fitur Utama yang Berjalan:**  
+- **Landing Page Festival & Lineup Interaktif:** Eksplorasi pengisi acara (musisi/pembicara), bio profil, stage lokasi, dan jadwal rundown acara tanpa tumpang tindih waktu.
+- **War Tiket Atomik Anti-Overselling:** Menggunakan transaksi basis data PL/pgSQL `SELECT ... FOR UPDATE` dengan proteksi konkurensi ketat, batas kuota per akun pengguna, serta idempotensi klaim ganda.
+- **E-Tiket Digital & Token Kriptografis Unik:** Penerbitan tiket instan ber-QR code unik berbasis hash SHA-256 untuk mempermudah akses penonton dan mencegah pemalsuan (*anti-spoofing*).
+- **Pemindai Kamera Lapangan Anti Double-Entry:** Pemindai QR berbasis web responsif untuk panitia gerbang dengan banner visual kontras tinggi (minimal 40% layar) yang menolak tiket yang telah digunakan atau tidak valid secara instan.
+- **Dasbor Realtime & Ekspor CSV Panitia:** Dasbor pemantauan kedatangan penonton *live* via WebSocket, pemantauan sisa kuota tiket, serta ekspor rekonsiliasi data kehadiran format CSV UTF-8 dengan BOM.
 
-- `<fitur 1>`
-- `<fitur 2>`
-- `<fitur 3>`
+**Alur Penggunaan:**  
+1. **Pengunjung Umum:** Membuka beranda TerraFest untuk melihat informasi acara, musisi tamu di `/lineup`, dan jadwal penampilan di `/schedule`.
+2. **Klaim Tiket:** Pengunjung login dengan akun Google, membuka `/tickets`, dan memilih kategori tiket. Setelah klaim berhasil, tiket ber-QR unik muncul di `/my-tickets`.
+3. **Pemeriksaan di Pintu Masuk:** Petugas gate lapangan membuka `/gate/scan` dan mengarahkan kamera ke QR tiket penonton. Sistem memverifikasi status dalam hitungan milidetik; layar menampilkan warna hijau terang (Tiket Sah) atau merah (Tiket Sudah Pernah Dipakai / Palsu).
+4. **Pemantauan Admin:** Koordinator panitia memantau laju kedatangan dan grafik kehadiran penonton secara langsung di `/admin` serta dapat mengunduh laporan kehadiran dalam bentuk berkas CSV.
+
+**Batas Kemampuan (Scope Boundary):**  
+- Pada versi kaderisasi ini, TerraFest memfokuskan autentikasi akun Google OAuth ITERA/Gmail dan menggratiskan tiket festival (*zero-cost war ticket claim*), sehingga belum menyertakan gateway pembayaran pihak ketiga (Payment Gateway Midtrans/Xendit).
+- Pemindaian tiket di lapangan membutuhkan konektivitas internet aktif pada perangkat pemindai untuk verifikasi langsung ke basis data pusat (*realtime live check-in*).
+
+---
 
 ### 1.6 Screenshot (opsional)
 
-Simpan gambar di `docs/` (mis. `docs/beranda.png`) dan tampilkan di sini:
-
-```markdown
-![Beranda](docs/beranda.png)
-```
+Tangkapan layar antarmuka TerraFest:
+- **Landing Page Publik:** Hero banner festival, highlight musisi, dan CTA klaim tiket.
+- **Jadwal & Lineup:** Tampilan kartu lineup musisi dan tabel rundown panggung.
+- **Tiket Saya:** Tampilan e-ticket dengan barcode QR dinamis penonton.
+- **Gate Scanner & Dasbor Admin:** Antarmuka pemindai panitia dan grafik realtime kehadiran.
 
 ---
 
 <!-- ============================================================ -->
-<!-- SYARAT — BOLEH DIHAPUS SETELAH DIVERIFIKASI PANITIA          -->
+<!-- SYARAT WAJIB KADERISASI                                      -->
 <!-- ============================================================ -->
 
-## 2. Syarat Wajib (boleh dihapus setelah diverifikasi panitia)
+## 2. Syarat Wajib (Kaderisasi HMIF ITERA)
 
-Sebagai bagian dari rangkaian kaderisasi, **setiap anggota kelompok** wajib:
+Sebagai bagian dari rangkaian kegiatan kaderisasi HMIF ITERA, seluruh anggota Kelompok 3 telah memenuhi syarat:
 
 1. **Follow GitHub HMIF ITERA** — [github.com/hmif-itera](https://github.com/hmif-itera)
 2. **Follow LinkedIn HMIF ITERA** — [linkedin.com/company/himpunan-mahasiswa-informatika-itera](https://www.linkedin.com/company/himpunan-mahasiswa-informatika-itera/)
 
-Panitia akan mengecek daftar follow sebelum menutup penilaian. Syarat yang belum terpenuhi dapat menahan proses verifikasi kelompok.
-
 ---
 
-## 3. Ketentuan tambahan
+## 3. Ketentuan Tambahan
 
 - Bahasa pemrograman, framework, dan pustaka bebas selama website bisa di-deploy dan diakses publik.
 - Website hasil jiplakan tanpa modifikasi berarti akan didiskualifikasi.
 - Joki atau pengerjaan oleh pihak di luar kelompok ditindak sesuai aturan kaderisasi.
 - Penilaian: Desain & UI/UX (25%), Fungsionalitas (25%), Kerja Sama Tim & Proses (25%), Kualitas Teknis & Deployment (25%).
-- Hal yang belum diatur akan ditentukan panitia dan diinformasikan menyusul.
-
-Ada pertanyaan? Hubungi panitia kaderisasi HMIF ITERA.
+- Seluruh spesifikasi teknis dan rincian user story mengacu pada dokumen `SKPL PRD TERRAFEST (Terra Festival ITERA).md`.
