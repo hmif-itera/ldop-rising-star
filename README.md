@@ -139,21 +139,30 @@ Isi seluruh sub-bagian berikut di branch kelompok kalian. Hapus teks penunjuk (`
 
 | Item | Keterangan |
 | --- | --- |
-| Nomor kelompok | `<1–10>` |
-| Nama kelompok (opsional) | `<nama kelompok / nama produk>` |
-| Tema yang dipilih | `<salin dari daftar tema Bagian 0.7>` |
-| Link website (deployment) | `<https://...vercel.app>` |
-| Repository | `<https://github.com/...>` |
+| Nomor kelompok | `8` |
+| Nama kelompok (opsional) | `MatchDay` |
+| Tema yang dipilih | `Platform booking lapangan olahraga (futsal/badminton)` |
+| Link website (deployment) | `matchday-ldop.vercel.app` |
+| Repository | `https://github.com/HirziDevs/ldop-rising-star/tree/kelompok-8` |
 
 ### 1.2 Anggota kelompok & pembagian tugas
 
 | No | Nama | NIM | Peran | Tugas yang dikerjakan |
 | --- | --- | --- | --- | --- |
-| 1 | `<nama>` | `<nim>` | `<ketua / front-end / back-end / desain / dokumentasi / QA>` | `<rincian tugas>` |
-| 2 | `<nama>` | `<nim>` | `<...>` | `<...>` |
-| 3 | `<nama>` | `<nim>` | `<...>` | `<...>` |
-| 4 | `<nama>` | `<nim>` | `<...>` | `<...>` |
-| 5 | `<nama>` | `<nim>` | `<...>` | `<...>` |
+| 1 | Hirzi Rifazio Adiesta Ramadhan | 125140132 |  |  |
+| 2 | Naela Wafiq Azizah | 125140208 |  |  |
+| 3 | Fatakhul Mubarok | 125140183 |  |  |
+| 4 | Muhammad Iqbal Algajali | 125140146 |  |  |
+| 5 | Aulia Rahmania Falah | 125140204 |  |  |
+| 6 | Enos Sean Adhyaksa Sianturi | 125140107 |  |  |
+| 7 | Fandy Agung Pratama | 125140206 |  |  |
+| 8 | Heri Sutanto Nababan | 125140170 |  |  |
+| 9 | Michelle Natalie Loisa | 125140109 |  |  |
+| 10 | Mutiara Nur Islami | 125140153 |  |  |
+| 11 | Audita Gea Salsabillah | 125140111 |  |  |
+| 12 | Muhammad Alfarisy Jundana Muttaqin | 125140108 |  |  |
+| 13 | Joviena Alya Sinatra | 125140103 |  |  |
+| 14 | Haris Ahmad Izatha | 125140115 |  |  |
 
 Catatan: setiap anggota wajib punya kontribusi yang terlihat di riwayat commit branch ini. Pembagian tugas boleh tidak simetris, tapi harus jelas dan sesuai kenyataan.
 
@@ -161,20 +170,19 @@ Catatan: setiap anggota wajib punya kontribusi yang terlihat di riwayat commit b
 
 | Bagian | Teknologi | Alasan pemilihan |
 | --- | --- | --- |
-| Bahasa / framework | `<mis. Next.js 15 + TypeScript>` | `<...>` |
-| Styling / UI | `<mis. Tailwind CSS, shadcn/ui>` | `<...>` |
-| Data / state | `<mis. JSON statis, Supabase>` | `<...>` |
-| Build & tooling | `<mis. Vite, pnpm>` | `<...>` |
-| Hosting | `<mis. Vercel>` | `<...>` |
-| Lainnya | `<ikon, font, aset>` | `<...>` |
+| Bahasa / framework | TypeScript, Next.js 16, React 19 |  |
+| Styling / UI | Tailwind CSS 4, komponen UI Radix UI dan shadcn/ui |  |
+| Data / state | MongoDB dengan Prisma 6, NextAuth.js 5 dengan session JWT |  |
+| Build & tooling | npm, Next.js dengan Turbopack, TypeScript, ESLint |  |
+| Hosting | Vercel |  |
+| Lainnya | Lucide React, Plus Jakarta Sans, Cloudflare R2, AWS SDK S3, Sharp |  |
 
 Cara menjalankan project secara lokal:
 
 ```bash
-# isi perintah yang benar-benar dipakai kelompok kalian
-pnpm install
-pnpm dev          # buka http://localhost:<port>
-pnpm build        # build produksi
+npm install
+npm run dev       # buka http://localhost:3000
+npm run build     # build produksi
 ```
 
 ### 1.4 Struktur kode
@@ -183,24 +191,34 @@ Ganti contoh di bawah dengan struktur nyata repository kalian (`tree -L 3 -I nod
 
 ```text
 .
-├── README.md
-├── package.json
-├── public/                 # aset statis (gambar, ikon, font)
-├── src/
-│   ├── app/                # routing & halaman
-│   │   ├── page.tsx        # beranda
-│   │   └── ...
-│   ├── components/         # komponen UI yang dipakai ulang
-│   ├── lib/                # helper, util, data
-│   └── styles/             # styling global
-└── ...
+├── app/                    # 
+│   ├── (auth)/             # 
+│   ├── (public)/           # 
+│   ├── admin/              # 
+│   ├── api/                # 
+│   ├── globals.css         # 
+│   └── layout.tsx          # 
+├── components/             # 
+├── docs/api/               # 
+├── lib/                    # 
+├── prisma/schema.prisma    # 
+├── public/                 # 
+├── types/                  # 
+├── API.md                  # 
+├── package.json            # 
+└── README.md
 ```
 
 | Path | Fungsi |
 | --- | --- |
-| `<src/app/>` | `<...>` |
-| `<src/components/>` | `<...>` |
-| `<...>` | `<...>` |
+| `app/(public)/` |  |
+| `app/(auth)/` |  |
+| `app/admin/` |  |
+| `app/api/` |  |
+| `components/` |  |
+| `lib/` |  |
+| `prisma/` |  |
+| `docs/api/` |  |
 
 ### 1.5 Penjelasan singkat project
 
@@ -247,7 +265,7 @@ Panitia akan mengecek daftar follow sebelum menutup penilaian. Syarat yang belum
 - Bahasa pemrograman, framework, dan pustaka bebas selama website bisa di-deploy dan diakses publik.
 - Website hasil jiplakan tanpa modifikasi berarti akan didiskualifikasi.
 - Joki atau pengerjaan oleh pihak di luar kelompok ditindak sesuai aturan kaderisasi.
-- Penilaian: Desain & UI/UX (25%), Fungsionalitas (25%), Kerja Sama Tim & Proses (25%), Kualitas Teknis & Deployment (25%).
+- Penilaian:  & UI/UX (25%), Fungsionalitas (25%), Kerja Sama Tim & Proses (25%), Kualitas Teknis & Deployment (25%).
 - Hal yang belum diatur akan ditentukan panitia dan diinformasikan menyusul.
 
 Ada pertanyaan? Hubungi panitia kaderisasi HMIF ITERA.

@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  nama      String?
+  email     String    @unique
+  foto      String?
+  passwordHash String
+  role         String    @default("USER")
+  bookings     Booking[]
+  ratings      Rating[]
+  createdAt    DateTime  @default(now())
+}
+
+model Lapangan {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  nama      String
+  harga     Int
+  aktif     Boolean   @default(true)
+  lokasi    String?
+  deskripsi String?
+  gambar    String?
+  bookings  Booking[]
+  ratings   Rating[]
+  createdAt DateTime  @default(now())
+}
+
+model Booking {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String   @db.ObjectId
+  lapanganId   String   @db.ObjectId
+  tanggalAwal  DateTime
+  tanggalAkhir DateTime
+  status       String   @default("PENDING")
+  createdAt    DateTime @default(now())
+
+  user     User     @relation(fields: [userId], references: [id])
+  lapangan Lapangan @relation(fields: [lapanganId], references: [id])
+
+  @@index([lapanganId, tanggalAwal])
+  @@index([userId])
+}
+
+model Rating {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String   @db.ObjectId
+  lapanganId String   @db.ObjectId
+  rating     Float
+  komentar   String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  user     User     @relation(fields: [userId], references: [id])
+  lapangan Lapangan @relation(fields: [lapanganId], references: [id])
+
+  @@unique([userId, lapanganId])
+  @@index([lapanganId])
+}
